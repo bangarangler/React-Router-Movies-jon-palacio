@@ -28,7 +28,7 @@ export default class MovieList extends Component {
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
+          <MovieDetails key={movie.id} movie={movie} saved={this.props.saved} />
         ))}
       </div>
     );
@@ -36,14 +36,14 @@ export default class MovieList extends Component {
 }
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
+  const { title, director, metascore, stars, saved } = movie;
   //const selectedMovie = this.state.movie.find(
   //movie => `${movie.id}` === this.props.match.params.id
   //);
   return (
     <Link to={`/movies/${movie.id}`}>
-      {/*}<MovieInfo />*/}
-      <div className="movie-card">
+      <MovieInfo movie={movie} />
+      {/*<div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
           Director: <em>{director}</em>
@@ -58,7 +58,7 @@ function MovieDetails({ movie }) {
             {star}
           </div>
         ))}
-      </div>
+      </div>*/}
     </Link>
   );
 }

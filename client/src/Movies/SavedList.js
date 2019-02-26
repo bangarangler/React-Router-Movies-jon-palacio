@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class SavedList extends Component {
   constructor(props) {
@@ -6,13 +6,21 @@ export default class SavedList extends Component {
   }
 
   render() {
+    const routeToHome = props => {
+      //console.log("test", props);
+      this.props.history.push(`/`);
+    };
     return (
       <div className="saved-list">
         <h3>Saved Movies:</h3>
         {this.props.list.map(movie => (
-          <span className="saved-movie">{movie.title}</span>
+          <span key={movie.title} className="saved-movie">
+            {movie.title}
+          </span>
         ))}
-        <div className="home-button">Home</div>
+        <button onClick={routeToHome} className="home-button">
+          Home
+        </button>
       </div>
     );
   }
